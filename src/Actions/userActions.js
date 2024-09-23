@@ -28,7 +28,7 @@ import { deleteUserFail, deleteUserRequest, deleteUserSuccess, updateUserFail, u
 export const login =(email, password) => async(dispatch)=>{
     try{
         dispatch(loginRequest())
-        const {data} = await axios.post('/api/v1/login',{email,password});
+        const {data} = await axios.post('https://server-side-files.onrender.com/api/v1/login',{email,password});
         dispatch(loginSuccess(data));
     }catch(error){
         dispatch(loginFail(error.response.data.message))
@@ -53,7 +53,7 @@ export const register =(userData) => async(dispatch)=>{
             
         }
        
-        const {data} = await axios.post(`/api/v1/register`,userData, config);
+        const {data} = await axios.post(`https://server-side-files.onrender.com/api/v1/register`,userData, config);
         dispatch(registerSuccess(data));
     }catch(error){
         dispatch(registerFail(error.response.data.message))
@@ -65,7 +65,7 @@ export const register =(userData) => async(dispatch)=>{
 export const loadUser  = async(dispatch)=>{
     try{
         dispatch(loadUserRequest())
-        const {data} = await axios.get(`/api/v1/userprofile`);
+        const {data} = await axios.get(`https://server-side-files.onrender.com/api/v1/userprofile`);
         dispatch(loadUserSuccess(data));
     }catch(error){
         dispatch(loadUserFail(error.response.data.message))
@@ -74,7 +74,7 @@ export const loadUser  = async(dispatch)=>{
 export const logout = async(dispatch)=>{
     try{
        
-       await axios.get('/api/v1/logout');
+       await axios.get('https://server-side-files.onrender.com/api/v1/logout');
         dispatch(logoutSuccess());
     }catch(error){
         dispatch(logoutFail)
@@ -92,7 +92,7 @@ export const updateProfile =(userData) => async(dispatch)=>{
             }
         }
     
-        const {data} = await axios.put('/api/v1/update',userData,config);
+        const {data} = await axios.put('https://server-side-files.onrender.com/api/v1/update',userData,config);
         dispatch(updateProfileSuccess(data));
     }catch(error){
         dispatch(updateProfileFail(error.response.data.message))
@@ -110,7 +110,7 @@ export const updatePassword =(formData) => async(dispatch)=>{
             }
         }
 
-         await axios.put('/api/v1/password/change',formData, config);
+         await axios.put('https://server-side-files.onrender.com/api/v1/password/change',formData, config);
         dispatch(updatePasswordSuccess());
     }catch(error){
         dispatch(updatePasswordFail(error.response.data.message))
@@ -129,7 +129,7 @@ export const forgetPassword =(formData) => async(dispatch)=>{
         }
         
     
-         const {data}  = await axios.post('/api/v1//Password/forget',formData,config);
+         const {data}  = await axios.post('https://server-side-files.onrender.com/api/v1//Password/forget',formData,config);
         dispatch(forgetPasswordSuccess(data));
     }catch(error){
         dispatch(forgetPasswordFail(error.response.data.message))
@@ -148,7 +148,7 @@ export const resetPassword =(formData,token) => async(dispatch)=>{
         }
         
     
-         const {data}  = await axios.post(  `/api/v1/password/reset/${token}`,formData,config);
+         const {data}  = await axios.post(  `https://server-side-files.onrender.com/api/v1/password/reset/${token}`,formData,config);
         dispatch(resetPasswordSuccess(data));
     }catch(error){
         dispatch(resetPasswordFail(error.response.data.message))
@@ -160,7 +160,7 @@ export const resetPassword =(formData,token) => async(dispatch)=>{
 export const getUsers  = async(dispatch)=>{
     try{
         dispatch(usersRequest())
-      const {data} = await axios.get('/api/v1/admin/users');
+      const {data} = await axios.get('https://server-side-files.onrender.com/api/v1/admin/users');
         dispatch(usersSuccess(data));
     }catch(error){
         dispatch(usersFail(error.response.data.message))
@@ -172,7 +172,7 @@ export const getUsers  = async(dispatch)=>{
 export const getUser  = id =>  async(dispatch)=>{
     try{
         dispatch(userRequest())
-      const {data} = await axios.get(`/api/v1/admin/user/${id}`);
+      const {data} = await axios.get(`https://server-side-files.onrender.com/api/v1/admin/user/${id}`);
         dispatch(userSuccess(data));
     }catch(error){
         dispatch(userFail(error.response.data.message))
@@ -184,7 +184,7 @@ export const getUser  = id =>  async(dispatch)=>{
 export const deleteUser  = id =>  async(dispatch)=>{
     try{
         dispatch(deleteUserRequest())
-      await axios.delete(`/api/v1/admin/user/${id}`);
+      await axios.delete(`https://server-side-files.onrender.com/api/v1/admin/user/${id}`);
         dispatch(deleteUserSuccess());
     }catch(error){
         dispatch(deleteUserFail(error.response.data.message))
@@ -202,7 +202,7 @@ export const updateUser =(id,formData) => async(dispatch)=>{
             }
         }
 
-         await axios.put(`/api/v1/admin/user/${id}`,formData, config);
+         await axios.put(`https://server-side-files.onrender.com/api/v1/admin/user/${id}`,formData, config);
         dispatch(updateUserSuccess());
     }catch(error){
         dispatch(updateUserFail(error.response.data.message))
