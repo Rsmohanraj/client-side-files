@@ -47,7 +47,7 @@ import { createReviewFail,
 
        
          
-        const { data} = await axios.get(`https://server-side-files.onrender.com`);
+        const { data} = await axios.get((link);
         dispatch(productsSuccess(data))
     }catch(error){
         dispatch(productsFail(error.response.data.message));
