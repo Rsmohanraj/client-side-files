@@ -58,8 +58,8 @@ import { createReviewFail,
  export const getProduct = id => async (dispatch) => {
     try{
         dispatch(productRequest())
-        const { data} = await axios.get(`https://server-side-files-1.onrender.com/api/v1/product/${id}`);
-        dispatch(productSuccess(data))
+let link=`https://server-side-files-1.onrender.com/api/v1/product${id}`;
+        dispatch(productSuccess(link))
     }catch(error){
         dispatch(productFail(error.response.data.message));
     }
