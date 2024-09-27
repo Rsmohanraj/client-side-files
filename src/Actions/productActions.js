@@ -59,7 +59,8 @@ import { createReviewFail,
     try{
         dispatch(productRequest())
 let link=`https://server-side-files-1.onrender.com/api/v1/product${id}`;
-        dispatch(productSuccess(link))
+        const {data} = await axios.get(link);
+        dispatch(productSuccess(data))
     }catch(error){
         dispatch(productFail(error.response.data.message));
     }
@@ -86,7 +87,7 @@ let link=`https://server-side-files-1.onrender.com/api/v1/product${id}`;
  export const getAdminProducts = async (dispatch) => {
     try{
         dispatch(adminProductsRequest())
-        let link = await axios.get(`https://server-side-files-1.onrender.com/api/v1/admin/products`);
+        const  = await axios.get(`https://server-side-files-1.onrender.com/api/v1/admin/products`);
         dispatch(adminProductsSuccess(link)
     }catch(error){
         dispatch(adminProductsFail(error.response.data.message));
