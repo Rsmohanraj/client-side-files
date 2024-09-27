@@ -86,8 +86,8 @@ let link=`https://server-side-files-1.onrender.com/api/v1/product${id}`;
  export const getAdminProducts = async (dispatch) => {
     try{
         dispatch(adminProductsRequest())
-        const { data} = await axios.get(`https://server-side-files-1.onrender.com/api/v1/admin/products`);
-        dispatch(adminProductsSuccess(data))
+        let link = await axios.get(`https://server-side-files-1.onrender.com/api/v1/admin/products`);
+        dispatch(adminProductsSuccess(link)
     }catch(error){
         dispatch(adminProductsFail(error.response.data.message));
     }
