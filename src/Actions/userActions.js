@@ -62,13 +62,32 @@ export const register =(userData) => async(dispatch)=>{
 
 
 }
-export const loadUser  = async(dispatch)=>{
-    try{
-        dispatch(loadUserRequest())
-        const {data} = await axios.get(`https://server-side-files-1.onrender.com/api/v1/userprofile`);
-        dispatch(loadUserSuccess(data));
-    }catch(error){
-        dispatch(loadUserFail(error.response.data.message))
+export const loadUser = ()=> async dispatch=>{
+    try {
+        const config = {
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            mode:'cors',
+            credentials:'include',
+            withCredentials:true
+        }
+        const res = await axios.get(`https://server-side-files-1.onrender.com/api/v1/userprofile`,config)
+        dispatch({
+            type: LOAD_USER_SUCCESS,
+            payload: res.data
+        })
+     
+        
+    } catch (error) {
+        console.log(error.response)
+      
+        dispatch({
+            type: LOAD_ADMIN_FAIL,
+            payload:error.response && error.response.data.message ? error.response.data.message
+            : error.message
+        })
     }
 }
 export const logout = async(dispatch)=>{
