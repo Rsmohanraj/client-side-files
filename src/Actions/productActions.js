@@ -95,8 +95,8 @@ let link=`https://server-side-files-1.onrender.com/api/v1/product${id}`;
  export const createNewProduct = productData => async (dispatch) => {
     try{
         dispatch(newProductRequest())
-        const { data} = await axios.post('https://server-side-files-1.onrender.com/api/v1/admin/product/new',productData,);
-        dispatch(newProductSuccess(data))
+         let link= await axios.post('https://server-side-files-1.onrender.com/api/v1/admin/product/new',productData,);
+        dispatch(newProductSuccess(link))
     }catch(error){
         dispatch(newProductFail(error.response.data.message));
     }
