@@ -67,7 +67,7 @@ import { createSlice } from "@reduxjs/toolkit";
             }
 
         },
-        loadUserRequest(state,  action){
+        userProfileRequest(state,  action){
             return{
                 ...state,
               isAuthenticated:false ,
@@ -76,7 +76,7 @@ import { createSlice } from "@reduxjs/toolkit";
             }
 
         },
-        loadUserSuccess(state, action){
+        userProfileSuccess(state, action){
             return{
                 loading:false,
                 isAuthenticated: true,
@@ -84,7 +84,7 @@ import { createSlice } from "@reduxjs/toolkit";
             }
 
         },
-        loadUserFail(state, action){
+        userProfileFail(state, action){
             return{
                 ...state,
                 loading:false,
@@ -245,9 +245,9 @@ export const {loginRequest,
 registerRequest,
 registerSuccess,
 registerFail,
-loadUserRequest,
-loadUserSuccess,
-loadUserFail,
+userProfileFail,
+userProfileRequest,
+userProfileSuccess,
 logoutSuccess,
 logoutFail,
 updateProfileRequest,
