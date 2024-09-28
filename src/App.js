@@ -14,7 +14,7 @@ import ProductSearch from './compontents/ProductSearch';
 import Login from './compontents/User/Login';
 import Register from './compontents/User/Register';
 
-import { loadUser } from './Actions/userActions';
+import { getUserProfile} from './Actions/userActions';
 import Profile from './compontents/User/Profile';
 import ProtectedRoute from './compontents/Route/ProtectedRoute';
 import UpdateProfile from './compontents/User/UpdateProfile';
@@ -56,7 +56,7 @@ function App() {
 
   useEffect(() => {
     // Dispatch the loadUser action
-    dispatch(loadUser);
+    dispatch(getUserProfile);
 async function getStripeApiKey() {
   const {data} = await axios.get('/api/v1/stripeapi')
 
