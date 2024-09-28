@@ -2,9 +2,6 @@ import { clearError,
      forgetPasswordFail,
      forgetPasswordRequest,
      forgetPasswordSuccess,
-     loadUserFail,
-     loadUserRequest,
-     loadUserSuccess,
      loginFail,
      loginRequest, 
      loginSuccess, 
@@ -21,7 +18,10 @@ import { clearError,
      updatePasswordSuccess, 
      updateProfileFail, 
      updateProfileRequest,
-     updateProfileSuccess} from "../Slices/authSlice"
+     updateProfileSuccess,
+        userProfileFail,
+     userProfileRequest,
+     userProfileSuccess} from "../Slices/authSlice"
        
 import axios from "axios";
 import { deleteUserFail, deleteUserRequest, deleteUserSuccess, updateUserFail, updateUserRequest, updateUserSuccess, userFail, userRequest, usersFail, usersRequest, usersSuccess, userSuccess } from "../Slices/userSlice";
@@ -62,13 +62,13 @@ export const register =(userData) => async(dispatch)=>{
 
 
 }
-export const loadUser  = async(dispatch)=>{
+export const getUserProfile  = async(dispatch)=>{
         try{
-            dispatch(loadUserRequest())
-            const {data} = await axios.get(`https://server-side-files-1.onrender.com/api/v1/userprofile`);
-            dispatch(loadUserSuccess(data));
+            dispatch(userProfileRequest())
+            const {data} = await axios.get(`/api/v1/userprofile`);
+            dispatch(userProfileSuccess(data));
         }catch(error){
-            dispatch(loadUserFail(error.response.data.message))
+            dispatch(userProfileFail(error.response.data.message))
         }
     }
    
